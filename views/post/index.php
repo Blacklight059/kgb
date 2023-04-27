@@ -2,25 +2,21 @@
 use App\Helpers\Text;
 use App\Models\Post;
 use App\Config;
+use App\PaginatedQuery;
 use App\URL;
 
 
 $title = 'Acceuil';
 $pdo = Config::getPDO();
 
+$paginatedQuery = new PaginatedQuery(
+    "SELECT * FROM missions ORDER BY date_debut DESC",
+    "SELECT COUNT(id) FROM missions",
+    Post::class
+);
 
-$currentPage = URL::getPositiveInt('page', 1);
-
-$count = (int)$pdo->query('SELECT COUNT(id) FROM missions')->fetch(PDO::FETCH_NUM)[0];
-$perPage = 4;
-$pages = ceil($count / $perPage);
-if ($currentPage > $pages) {
-    throw new Exception('Cette page n\'existe pas');
-}
-$offSet = $perPage * ($currentPage - 1);
-
-$query = $pdo->query("SELECT * FROM missions ORDER BY date_debut DESC LIMIT $perPage OFFSET $offSet");
-$posts = $query->fetchAll(PDO::FETCH_CLASS, Post::class);
+$posts = $paginatedQuery->getItems();
+$link = $router->url('home');
 ?>
 
 <div class="row">
@@ -39,15 +35,8 @@ $posts = $query->fetchAll(PDO::FETCH_CLASS, Post::class);
         </div>
     <?php endforeach ?>
     <div class="d-flex justify-content-between my-4">
-    <?php if ($currentPage > 1): ?>
-        <?php
-        $link = $router->url('home');
-        if ($currentPage > 2) $link .= '?page=' . ($currentPage - 1);
-        ?>
-        <a href="<?= $link ?>?page = $currentPage - 1" class="btn btn-primary">&laquo; Page précédente</a>
-    <?php endif ?>
-    <?php if ($currentPage < $pages): ?>
-        <a href="<?= $router->url('home') ?>?page = $currentPage + 1" class="btn btn-primary ml-auto">Page suivante &raquo;</a>
-    <?php endif ?>
-</div>
+        <?= $paginatedQuery->PreviousLink($link) ?>
+        <?= $paginatedQuery->nextLink($link) ?>
+
+    </div>
 </div>

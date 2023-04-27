@@ -7,7 +7,6 @@ $id = (int)$params['id'];
 $slug = $params['slug'];
 
 $pdo = Config::getPDO();
-dd($pdo);
 $query = $pdo->prepare("SELECT * FROM missions WHERE id = :id");
 $query->execute(['id' => $id]);
 $query->setFetchMode(PDO::FETCH_CLASS, Post::class);
