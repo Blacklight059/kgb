@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class agent {
+class Agent {
 
     private $id;
 
@@ -20,7 +20,7 @@ class agent {
     public function getFirstname(): ?string {
         return $this->firstname;
     }
-    public function getNomdeCode(): ?string {
+    public function getNom_de_code(): ?string {
         return $this->nom_de_code;
     }
 

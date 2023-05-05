@@ -1,3 +1,5 @@
+
+
 <?php
 require '../vendor/autoload.php';
 $router = new AltoRouter(); 
@@ -24,7 +26,9 @@ $router = new App\Router(dirname(__DIR__) . '/views');
 $router
     ->get('/', 'post/index', 'home')
     ->get('/mission/[*:slug]-[i:id]', 'post/mission', 'mission')
-    ->get('/admin', 'post/admin', 'admin')
+    ->get('/admin', 'admin/post/index', 'admin_posts')
+    ->match('/admin/post/[i:id]', 'admin/post/edit', 'admin_post')
+    ->post('/admin/post/[i:id]/delete', 'admin/post/delete', 'admin_post_delete')
+    ->get('/admin/post/new', 'admin/post/new', 'admin_post_new')
     ->run();
-    
 ?>

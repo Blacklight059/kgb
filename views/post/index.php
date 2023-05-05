@@ -3,6 +3,7 @@ use App\Helpers\Text;
 use App\Models\Post;
 use App\Config;
 use App\PaginatedQuery;
+use App\Table\PostTable;
 use App\URL;
 
 
@@ -14,6 +15,8 @@ $paginatedQuery = new PaginatedQuery(
     "SELECT COUNT(id) FROM missions",
     Post::class
 );
+
+$table = new PostTable($pdo);
 
 $posts = $paginatedQuery->getItems();
 $link = $router->url('home');

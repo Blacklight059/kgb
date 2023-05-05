@@ -20,16 +20,23 @@ class Post {
 
     private $type_mission = [];
 
-     public function getTitle(): ?string{
-        return $this->title;
-     }
+   public function getTitle(): ?string
+   {
+      return $this->title;
+   }
+   public function setTitle(string $title): self
+   {
+      $this->title = $title;
+      return $this;   
+   }
 
    public function getFormattedContent(): ?string
    {
       return nl2br(htmlentities($this->content));
    }
 
-     public function getExcerpt(): ?string{
+     public function getExcerpt(): ?string
+     {
         if ($this->content === null) {
             return null;
         }
@@ -43,9 +50,29 @@ class Post {
      {
         return $this->slug;
      }
+     public function setSlug (string $slug): self
+     {
+        $this->slug = $slug;
+        return $this;
+     }
      public function getNomdecode (): ?string
      {
         return $this->nom_de_code;
+     }
+     public function setNomdecode (string $nom_de_code): self
+     {
+        $this->nom_de_code = $nom_de_code;
+        return $this;
+     }
+     public function getContent (): ?string
+     {
+        return $this->content;
+        
+     }
+     public function setContent (string $content): self
+     {
+        $this->content = $content;
+        return $this;
      }
      public function getId(): ?int
      {

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'd6c4012adf9cfd176599ed4ca530d2978fdd11e2',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'd6c4012adf9cfd176599ed4ca530d2978fdd11e2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -79,6 +79,15 @@
             'reference' => 'e2edac9ce47e6df07e38143c7cfa6bdbc1a6dcc4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/var-dumper',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'vlucas/valitron' => array(
+            'pretty_version' => 'v1.4.5',
+            'version' => '1.4.5.0',
+            'reference' => 'c3b4dac8586291990e6398961852e972600ac7b5',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../vlucas/valitron',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
