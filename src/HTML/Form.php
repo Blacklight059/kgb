@@ -39,11 +39,12 @@ HTML;
 HTML;
     }
 
-    private function getValue (string $key) {
+    private function getValue (string $key): ?string 
+    {
         if (is_array($this->data)) {
             return $this->data[$key] ?? null;
         }
-        $method = 'get' . str_replace(' ', '', ucfirst(str_replace('_', '', $key)));
+        $method = 'get' . str_replace(' ', '',ucfirst(str_replace('_', '', $key)));
         return $this->data->$method();
     }
 
@@ -58,11 +59,7 @@ HTML;
 
     private function getErrorFeedback(string $key): string 
     {
-        $invalidFeedback = '<div class="invalid-feedback">' . implode('<br>' , $this->errors[$key]) . '</div>';
-        $invalidFeedback = '';
-        if (isset($this->errors[$key])) {
-            return '<div class="invalid-feedback">' . implode('<br>' , $this->errors[$key]) . '</div>';
-        }
+
         return '';
     }
 

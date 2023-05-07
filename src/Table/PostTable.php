@@ -10,16 +10,33 @@ final class PostTable extends Table {
     protected $table = "missions";
     protected $class = Post::class;
 
-    public function update (Post $post): void
+    public function create (Post $post): void
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET nom_de_code = :nom_de_code WHERE id = ?");
+        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET slug = :slug, contenu = :contenu ");
         $ok = $query->execute([
-            'id' => $post->getId(),
-            'nom_de_code' => $post->getNomdecode()
+            'slug' => $post->getSlug(),
+            'contenu' =>$post->getContent()
         ]);
         if ($ok === false)
         {
-            throw new \Exception("Impossible de supprimer l'enregistreemnt dans la table {$this->table}");
+            throw new \Exception("Impossible de créer l'enregistreemnt dans la table {$this->table}");
+        }
+
+        $post->setId($this->pdo->lastInsertId());
+    }
+
+    public function update (Post $post): void
+    {
+        $query = $this->pdo->prepare("UPDATE missions SET slug = :slug, content = :content WHERE id = :id");
+        $ok = $query->execute([
+            'id' => $post->getId(),
+            'slug' => $post->getSlug(),
+            'content' =>$post->getContent()
+
+        ]);
+        if ($ok === false)
+        {
+            throw new \Exception("Impossible de modifier l'enregistreemnt dans la table {$this->table}");
         }
     }
 

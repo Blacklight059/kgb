@@ -17,9 +17,8 @@
         </a>
         <nav class="row  row-cols-2-lg header-nav">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">Acceuil</a>
-                <a class="navbar-brand" href="mission">Missions</a>
-                <a class="navbar-brand" href="admin.php">Administration</a>
+                <a class="navbar-brand" href="<?= $router->url('home') ?>">Accueil</a>
+                <a class="navbar-brand" href="<?= $router->url('admin_posts') ?>">Administration</a>
 
             </div>
         </nav>
