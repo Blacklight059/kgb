@@ -83,6 +83,6 @@ if($contact === false) {
 <p class="text-muted"><?=$post->getDateBegin()->format('d F Y') ?></p>
     <p>Cible : <?= htmlentities($cible->getNom_de_code()) ?></p>
     <p>Agent : <?= htmlentities($agent->getNom_de_code()) ?></p>
-    <p>Contact : <?= htmlentities($contact->getNom_de_code()) ?></p>
+    <p>Contact : <?= htmlentities($contact->getNomdecode()) ?></p>
 
 <p><?= $post->getFormattedContent() ?></p>

@@ -14,13 +14,13 @@ if (!empty($_POST)) {
     ObjectHelper::hydrate($post, $_POST, ['nom_de_code', 'content', 'slug']);
 
     if (empty($errors)) {
-        $postTable->create($post);
-        header('Location: ' . $router->$url('admin_post', ['id' => $post->getId()]) . '?created=1');
+        $postTable->create($item);
+        header('Location: ' . $router->$url('admin_post', ['id' => $item->getId()]) . '?created=1');
         exit();
     }
 }
 
-$form = new Form($post, $errors);
+$form = new Form($item, $errors);
 
 ?>
 

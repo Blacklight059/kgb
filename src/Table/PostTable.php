@@ -10,46 +10,24 @@ final class PostTable extends Table {
     protected $table = "missions";
     protected $class = Post::class;
 
-    public function create (Post $post): void
+    public function createPost (Post $post): void
     {
-        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET slug = :slug, contenu = :contenu ");
-        $ok = $query->execute([
+        $id = $this->create([
             'slug' => $post->getSlug(),
             'contenu' =>$post->getContent()
         ]);
-        if ($ok === false)
-        {
-            throw new \Exception("Impossible de créer l'enregistreemnt dans la table {$this->table}");
-        }
-
-        $post->setId($this->pdo->lastInsertId());
+        $post->setId($id);
     }
 
-    public function update (Post $post): void
+    public function updatePost (Post $post): void
     {
-        $query = $this->pdo->prepare("UPDATE missions SET slug = :slug, content = :content WHERE id = :id");
-        $ok = $query->execute([
+        $this->update([
             'id' => $post->getId(),
             'slug' => $post->getSlug(),
             'content' =>$post->getContent()
 
-        ]);
-        if ($ok === false)
-        {
-            throw new \Exception("Impossible de modifier l'enregistreemnt dans la table {$this->table}");
-        }
+        ], $post->getId());
     }
-
-    public function delete (int $id)
-    {
-        $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id = ?");
-        $ok = $query->execute([$id]);
-        if ($ok === false)
-        {
-            throw new \Exception("Impossible de supprimer l'enregistreemnt $id dans la table {$this->table}");
-        }
-    }
-
 
     public function findPaginated()
     {

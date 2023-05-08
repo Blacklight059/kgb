@@ -14,7 +14,7 @@ if (!empty($_POST)) {
     ObjectHelper::hydrate($post, $_POST, ['nom_de_code', 'content', 'slug']);
 
     if (empty($errors)) {
-        $postTable->update($post);
+        $postTable->updatePost($post);
         $success = true;
     }
 }

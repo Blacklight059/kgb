@@ -19,7 +19,6 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?= $router->url('home') ?>">Accueil</a>
                 <a class="navbar-brand" href="<?= $router->url('admin_posts') ?>">Missions</a>
-                <a class="navbar-brand" href="<?= $router->url('admin_contacts') ?>">Contacts</a>
 
             </div>
         </nav>

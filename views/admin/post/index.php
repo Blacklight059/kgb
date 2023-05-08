@@ -18,7 +18,7 @@ $link = $router->url('admin_posts');
 
 ?>
 
-<?php if (isset($_GET['felete'])): ?>
+<?php if (isset($_GET['delete'])): ?>
     <div class="alert alert-success">
         L'enregistrement a bien été supprimer
     </div>

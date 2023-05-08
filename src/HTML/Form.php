@@ -21,7 +21,6 @@ class Form {
         <input type="text" id="field{$key}" class="{$this->getInputClass($key)}" name="{$key}" value="{$value}" required>
         {$this->getErrorFeedback($key)};
         </div>
-    </div>
 HTML;
     }
 
@@ -35,7 +34,6 @@ HTML;
         <textarea type="text" id="field{$key}" class="{$this->getInputClass($key)}" name="{$key}" value="{$value}" required>{$value}</textarea>
         {$this->getErrorFeedback($key)};
         </div>
-    </div>
 HTML;
     }
 

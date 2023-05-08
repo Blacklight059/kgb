@@ -1,10 +1,12 @@
 <form method="POST">
     
+    <?= $form->input('name', 'NOM') ?>
+    <?= $form->input('firstname', 'Prénom') ?>    
     <?= $form->input('nom_de_code', 'Titre') ?>
-    <?= $form->input('slug', 'URL') ?>
-    <?= $form->input('content', 'Contenu') ?>
+
     <button class="btn btn-primary">
-        <?php if ($post->getId() !== null) : ?>
+        <?php 
+        if ($item->getId() !== null) : ?>
             modifier
         <?php else: ?>
             Créer
