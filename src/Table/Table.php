@@ -68,11 +68,11 @@ abstract class Table {
         }
     }
 
-    public function create (array $data): int
+    public function create (array $data)
     {
         $sqlfields = [];
-        foreach ($data as $k => $v) {
-            $sqlfields[] = "$k = :$k";
+        foreach ($data as $key => $value) {
+            $sqlfields[] = "$key = :$key";
         }
         $query = $this->pdo->prepare("INSERT INTO {$this->table} SET " . implode(',',  $sqlfields));
         $ok = $query->execute($data);
@@ -81,7 +81,7 @@ abstract class Table {
             throw new \Exception("Impossible de créer l'enregistreemnt dans la table {$this->table}");
         }
 
-        return $this->pdo->lastInsertId();
+        return (int)$this->pdo->lastInsertId();
     }
 
     public function update (array $data, int $id)

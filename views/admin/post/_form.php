@@ -1,10 +1,15 @@
 <form method="POST">
-    
-    <?= $form->input('nom_de_code', 'Titre') ?>
+
     <?= $form->input('slug', 'URL') ?>
+    <?= $form->input('title', 'Titre') ?>
     <?= $form->input('content', 'Contenu') ?>
+    <?= $form->input('nom_de_code', 'Nom de code') ?>
+    <?= $form->select('types_mission', 'type de la mission', $types) ?>
+
+
+
     <button class="btn btn-primary">
-        <?php if ($post->getId() !== null) : ?>
+        <?php if ($item->getId() !== null) : ?>
             modifier
         <?php else: ?>
             Créer

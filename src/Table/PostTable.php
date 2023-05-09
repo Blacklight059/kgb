@@ -14,7 +14,9 @@ final class PostTable extends Table {
     {
         $id = $this->create([
             'slug' => $post->getSlug(),
-            'contenu' =>$post->getContent()
+            'contenu' =>$post->getContent(),
+            'type_mission_id' => $post->getTypesmission()
+
         ]);
         $post->setId($id);
     }
@@ -24,7 +26,8 @@ final class PostTable extends Table {
         $this->update([
             'id' => $post->getId(),
             'slug' => $post->getSlug(),
-            'content' =>$post->getContent()
+            'content' => $post->getContent(),
+            'type_mission_id' => $post->getTypesmission()
 
         ], $post->getId());
     }

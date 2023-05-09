@@ -20,6 +20,8 @@
                 <a class="navbar-brand" href="<?= $router->url('home') ?>">Accueil</a>
                 <a class="navbar-brand" href="<?= $router->url('admin_posts') ?>">Missions</a>
                 <a class="navbar-brand" href="<?= $router->url('admin_contacts') ?>">Contacts</a>
+                <a class="navbar-brand" href="<?= $router->url('admin_types') ?>">Type de mission</a>
+                <a class="navbar-brand" href="<?= $router->url('admin_nationalites') ?>">Nationalité</a>
 
             </div>
         </nav>

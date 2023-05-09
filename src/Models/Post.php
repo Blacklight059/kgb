@@ -7,18 +7,12 @@ use DateTime;
 class Post {
 
     private $id;
-
     private $slug;
-    
     private $title;
-    
     private $content;
-    
     private $date_debut;
-
     private $nom_de_code;
-
-    private $type_mission = [];
+    private $types_mission;
 
    public function getTitle(): ?string
    {
@@ -84,5 +78,14 @@ class Post {
       $this->id = $id;
       return $this;     }
 
+      public function getTypesmission (): ?string {
+         return $this->types_mission;
+     }
+ 
+     public function setTypesmission(string $types_mission): self
+     {
+        $this->types_mission = $types_mission;
+        return $this;   
+     }
     
 }

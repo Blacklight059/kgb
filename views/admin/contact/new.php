@@ -2,21 +2,20 @@
 use App\Config;
 use App\HTML\Form;
 use App\Models\Contact;
-use App\Models\Post;
 use App\Table\ContactTable;
 use App\ObjectHelper;
 
 $errors = [];
 $item = new Contact();
-
 if (!empty($_POST)) {
     $pdo = Config::getPDO();
     $table = new ContactTable($pdo);
-    ObjectHelper::hydrate($item, $_POST, ['name', 'firstname', 'nom_de_code']);
+    ObjectHelper::hydrate($item, $_POST, ['name', 'firstname', 'nom_de_code', 'nationalite_id', 'mission_id', 'planque_id']);
 
     if (empty($errors)) {
-        $table->create($item);
-        header('Location: ' . $router->$url('admin_contacts' . '?created=1'));
+
+        $table->create($_POST);
+        header('Location: ' . $router->url('admin_contacts'));
         exit();
     }
 }

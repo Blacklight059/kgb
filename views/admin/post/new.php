@@ -6,15 +6,15 @@ use App\Table\PostTable;
 use App\ObjectHelper;
 
 $errors = [];
-$post = new Post();
+$item = new Post();
 
 if (!empty($_POST)) {
     $pdo = Config::getPDO();
-    $postTable = new PostTable($pdo);
-    ObjectHelper::hydrate($post, $_POST, ['nom_de_code', 'content', 'slug']);
+    $table = new PostTable($pdo);
+    ObjectHelper::hydrate($item, $_POST, ['nom_de_code', 'content', 'slug']);
 
     if (empty($errors)) {
-        $postTable->create($item);
+        $table->create($item);
         header('Location: ' . $router->$url('admin_post', ['id' => $item->getId()]) . '?created=1');
         exit();
     }
