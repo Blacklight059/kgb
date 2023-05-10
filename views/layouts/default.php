@@ -23,6 +23,7 @@
                 <a class="navbar-brand" href="<?= $router->url('admin_types') ?>">Type de mission</a>
                 <a class="navbar-brand" href="<?= $router->url('admin_nationalites') ?>">Nationalité</a>
                 <a class="navbar-brand" href="<?= $router->url('admin_specialites') ?>">Specialité</a>
+                <a class="navbar-brand" href="<?= $router->url('admin_cibles') ?>">Cible</a>
 
             </div>
         </nav>

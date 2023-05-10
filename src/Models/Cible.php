@@ -6,29 +6,76 @@ use DateTime;
 class Cible {
 
     private $id;
-    private $nom;
-    private $prenom;
+    private $name;
+    private $firstname;
     private $nom_de_code;
     private $date_naissance;
+    private $nationalite_id;
+    private $mission_id;
 
     public function getId (): ?int {
-        return $id = $this->id;
+        return $this->id;
     }
 
-    public function getNom (): ?string {
-        return $nom = $this->nom;
+    public function setId(int $id)
+    {
+       $this->id = $id;
+       return $this;   
+    }
+ 
+    public function getName (): ?string {
+        return $this->name;
     }
 
-    public function getPrenom (): ?string {
-        return $prenom = $this->prenom;
+    public function setName(string $name): self
+    {
+       $this->name = $name;
+       return $this;   
+    }
+ 
+    public function getFirstname (): ?string {
+        return $this->firstname;
     }
 
-    public function getNom_de_code (): ?string {
-        return $nom_de_code = $this->nom_de_code;
+    public function setFirstname(string $firstname): self
+    {
+       $this->firstname = $firstname;
+       return $this;   
     }
 
-    public function getDate_naissance (): DateTime {
-        return new DateTime($this->date_naissance);
+    public function getNomdecode (): ?string {
+        return $this->nom_de_code;
+    }
+    
+    public function setNomdecode(string $nom_de_code): self
+    {
+       $this->nom_de_code = $nom_de_code;
+       return $this;   
+    }
+
+    public function getDateofbirth(): DateTime
+    {
+       return new DateTime($this->date_naissance);
+    }
+
+    public function getNationaliteid (): ?string {
+        return $this->nationalite_id;
+    }
+    
+    public function setNationaliteid(string $nationalite_id): self
+    {
+       $this->nationalite_id = $nationalite_id;
+       return $this;   
+    }
+
+    public function getMissionid (): ?string {
+        return $this->mission_id;
+    }
+    
+    public function setMissionid(string $mission_id): self
+    {
+       $this->mission_id = $mission_id;
+       return $this;   
     }
 
 

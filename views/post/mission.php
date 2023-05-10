@@ -85,8 +85,8 @@ if($contact === false) {
 
 <h1><?= htmlentities($post->getSlug()) ?></h1>
 <p class="text-muted">Date de début de mission : <?=$post->getDateBegin()->format('d F Y') ?></p>
-    <p>Cible : <?= htmlentities($cible->getNom_de_code()) ?></p>
-    <p>Agent : <?= htmlentities($agent->getNom_de_code()) ?></p>
+    <p>Cible : <?= htmlentities($cible->getNomdecode()) ?></p>
+    <p>Agent : <?= htmlentities($agent->getNomdecode()) ?></p>
     <p>Contact : <?= htmlentities($contact->getNomdecode()) ?></p>
     <p>Specialite : <?= htmlentities($specialite->getName()) ?></p>
 

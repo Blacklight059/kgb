@@ -58,5 +58,12 @@ $router
     ->post('/admin/specialite/[i:id]/delete', 'admin/specialite/delete', 'admin_specialite_delete')
     ->match('/admin/specialite/new', 'admin/specialite/new', 'admin_specialite_new')
 
+    // Gestion des cibles
+    ->get('/admin/cibles', 'admin/cible/index', 'admin_cibles')
+    ->match('/admin/cible/[i:id]', 'admin/cible/edit', 'admin_cible')
+    ->post('/admin/cible/[i:id]/delete', 'admin/cible/delete', 'admin_cible_delete')
+    ->match('/admin/cible/new', 'admin/cible/new', 'admin_cible_new')
+
+
     ->run();
 ?>
