@@ -4,19 +4,33 @@ use App\HTML\Form;
 use App\Table\PostTable;
 use App\ObjectHelper;
 use App\Table\TypeTable;
+use App\Table\SpecialiteTable;
+
+
 
 $pdo = Config::getPDO();
 $postTable = new PostTable($pdo);
 $typeTable = new TypeTable($pdo);
+$specialiteTable = new SpecialiteTable($pdo);
 $types = $typeTable->list();
+$specialites = $specialiteTable->list();
+
 $item = $postTable->find($params['id']);
+$type = $typeTable->find($params['id']);
+$specialite = $specialiteTable->find($params['id']);
+
+$itemId = $item->getId();
+$typeId = $type->getId();
+
+
 $success = false;
 $errors = [];
-dd($item);
 if (!empty($_POST)) {
-    ObjectHelper::hydrate($item, $_POST, ['nom_de_code', 'content', 'slug', 'types_mission']);
+
+    ObjectHelper::hydrate($item, $_POST, ['nom_de_code', 'content', 'slug', 'types_mission', 'specialite']);
     if (empty($errors)) {
         $postTable->updatePost($item);
+        $typeId === $itemId;
         $success = true;
     }
 }

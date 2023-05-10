@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Plznque {
+class Planque {
 
     private $id;
 

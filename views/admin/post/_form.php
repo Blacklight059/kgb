@@ -5,6 +5,8 @@
     <?= $form->input('content', 'Contenu') ?>
     <?= $form->input('nom_de_code', 'Nom de code') ?>
     <?= $form->select('types_mission', 'type de la mission', $types) ?>
+    <?= $form->select('specialite', 'specialite requise pour la mission', $specialites) ?>
+
 
 
 

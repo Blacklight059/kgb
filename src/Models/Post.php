@@ -12,7 +12,8 @@ class Post {
     private $content;
     private $date_debut;
     private $nom_de_code;
-    private $types_mission;
+    private $type_mission_id;
+    private $specialite_id;
 
    public function getTitle(): ?string
    {
@@ -79,13 +80,24 @@ class Post {
       return $this;     }
 
       public function getTypesmission (): ?string {
-         return $this->types_mission;
+         return $this->type_mission_id;
      }
  
-     public function setTypesmission(string $types_mission): self
+     public function setTypesmission(string $type_mission_id): self
      {
-        $this->types_mission = $types_mission;
+        $this->type_mission_id = $type_mission_id;
         return $this;   
      }
+
+      public function getSpecialite (): ?string {
+         return $this->specialite_id;
+      }
+
+      public function setSpecialite(string $specialite_id): self
+      {
+         $this->specialite_id = $specialite_id;
+         return $this;   
+      }
+
     
 }

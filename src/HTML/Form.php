@@ -42,7 +42,8 @@ HTML;
         $optionsHTML = [];
         foreach ($options as $k => $v)
         {
-            $optionsHTML[] = "<option value=\"$k\">$v</option>";
+            $selected = $k ? " selected" : "";
+            $optionsHTML[] = "<option value=\"$k\"$selected>$v</option>";
         }
         $v = $this->getValue($key);
         $optionsHTML = implode('', $optionsHTML);

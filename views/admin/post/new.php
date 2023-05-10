@@ -14,7 +14,7 @@ if (!empty($_POST)) {
     ObjectHelper::hydrate($item, $_POST, ['nom_de_code', 'content', 'slug']);
 
     if (empty($errors)) {
-        $table->create($item);
+        $table->create($_POST);
         header('Location: ' . $router->$url('admin_post', ['id' => $item->getId()]) . '?created=1');
         exit();
     }

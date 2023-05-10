@@ -5,17 +5,26 @@ namespace App\Models;
 class Specialite {
 
     private $id;
-    private $slug;
-    private $nom;
-  
-    public function getId(): ?int {
+    private $name;
+
+    public function getId (): ?int {
         return $this->id;
     }
-    public function getSlug(): ?String {
-        return $this->slug;
+
+    public function setId(int $id)
+    {
+       $this->id = $id;
+       return $this;   
     }
-    public function getName(): ?string {
-        return $this->nom;
+ 
+    public function getName (): ?string {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+       $this->name = $name;
+       return $this;   
     }
 
 }

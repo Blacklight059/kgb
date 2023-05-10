@@ -52,5 +52,11 @@ $router
     ->post('/admin/type/[i:id]/delete', 'admin/type/delete', 'admin_type_delete')
     ->match('/admin/type/new', 'admin/type/new', 'admin_type_new')
 
+    // Gestion des specialites
+    ->get('/admin/specialites', 'admin/specialite/index', 'admin_specialites')
+    ->match('/admin/specialite/[i:id]', 'admin/specialite/edit', 'admin_specialite')
+    ->post('/admin/specialite/[i:id]/delete', 'admin/specialite/delete', 'admin_specialite_delete')
+    ->match('/admin/specialite/new', 'admin/specialite/new', 'admin_specialite_new')
+
     ->run();
 ?>

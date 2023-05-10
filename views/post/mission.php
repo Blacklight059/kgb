@@ -15,7 +15,6 @@ $query->execute(['id' => $id]);
 $query->setFetchMode(PDO::FETCH_CLASS, Post::class);
 /** @var Post|false */
 $post = $query->fetch();
-
 if($post === false) {
     throw new Exception('Aucun article ne correspond à cet ID');
 }
@@ -39,15 +38,20 @@ if($cible === false) {
     throw new Exception('Aucune cible ne correspond à cet ID');
 }
 
+
 $query = $pdo->prepare("
-SELECT s.id, s.slug, s.nom 
+SELECT * 
 FROM specialite s
-WHERE agent_id = :id");
+WHERE id = :id");
+
+
 
 $query->execute(['id' => $post->getId()]);
 $query->setFetchMode(PDO::FETCH_CLASS, Specialite::class);
-/** @var Cible|false  */
+/** @var Specialite|false  */
+
 $specialite = $query->fetch();
+
 if($specialite === false) {
     throw new Exception('Aucune specialite ne correspond à cet ID');
 }
@@ -80,9 +84,12 @@ if($contact === false) {
 ?>
 
 <h1><?= htmlentities($post->getSlug()) ?></h1>
-<p class="text-muted"><?=$post->getDateBegin()->format('d F Y') ?></p>
+<p class="text-muted">Date de début de mission : <?=$post->getDateBegin()->format('d F Y') ?></p>
     <p>Cible : <?= htmlentities($cible->getNom_de_code()) ?></p>
     <p>Agent : <?= htmlentities($agent->getNom_de_code()) ?></p>
     <p>Contact : <?= htmlentities($contact->getNomdecode()) ?></p>
+    <p>Specialite : <?= htmlentities($specialite->getName()) ?></p>
+
+
 
 <p><?= $post->getFormattedContent() ?></p>

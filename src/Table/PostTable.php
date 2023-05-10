@@ -27,7 +27,9 @@ final class PostTable extends Table {
             'id' => $post->getId(),
             'slug' => $post->getSlug(),
             'content' => $post->getContent(),
-            'type_mission_id' => $post->getTypesmission()
+            'type_mission_id' => $post->getTypesmission(),
+            'specialite_id' => $post->getSpecialite()
+
 
         ], $post->getId());
     }
