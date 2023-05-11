@@ -97,6 +97,16 @@ abstract class Table {
             throw new \Exception("Impossible de modifier l'enregistreemnt dans la table {$this->table}");
         }
     }
+    
+    public function list(): array
+    {
+        $types = $this->all();
+        $results = [];
+        foreach($types as $type) {
+            $results[$type->getId()] = $type->getName();
+        }
+        return $results;
+    } 
 
 }
 

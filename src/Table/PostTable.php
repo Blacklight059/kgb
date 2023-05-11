@@ -14,8 +14,17 @@ final class PostTable extends Table {
     {
         $id = $this->create([
             'slug' => $post->getSlug(),
-            'contenu' =>$post->getContent(),
-            'type_mission_id' => $post->getTypesmission()
+            'content' => $post->getContent(),
+            'nom_de_code' => $post->getNomdecode(),
+            'agents' => $post->getAgents(),
+            'cibles' => $post->getCibles(),
+            'contacts' => $post->getContacts(),
+            'date_debut' => $post->getDatedebut(),
+            'date_fin' => $post->getDatefin(),
+            'specialite_id' => $post->getSpecialite(),
+            'type_mission_id' => $post->getTypesmission(),
+            'statuts_id' => $post->getStatutsid(),
+            'planque_id' => $post->getPlanqueid()
 
         ]);
         $post->setId($id);
@@ -27,9 +36,16 @@ final class PostTable extends Table {
             'id' => $post->getId(),
             'slug' => $post->getSlug(),
             'content' => $post->getContent(),
+            'nom_de_code' => $post->getNomdecode(),
+            'agents' => $post->getAgents(),
+            'cibles' => $post->getCibles(),
+            'contacts' => $post->getContacts(),
+            'date_debut' => $post->getDatedebut(),
+            'date_fin' => $post->getDatefin(),
+            'specialite_id' => $post->getSpecialite(),
             'type_mission_id' => $post->getTypesmission(),
-            'specialite_id' => $post->getSpecialite()
-
+            'statuts_id' => $post->getStatutsid(),
+            'planque_id' => $post->getPlanqueid(),
 
         ], $post->getId());
     }
@@ -37,7 +53,7 @@ final class PostTable extends Table {
     public function findPaginated()
     {
         $paginatedQuery = new PaginatedQuery (
-            "SELECT * FROM missions ORDER BY date_debut DESC",
+            "SELECT * FROM missions ORDER BY id",
             "SELECT COUNT(id) FROM missions",
             Post::class
     
@@ -53,4 +69,15 @@ final class PostTable extends Table {
         return [$posts, $paginatedQuery];
 
     }
+
+    public function listMission(): array
+    {
+        $types = $this->all();
+        $results = [];
+        foreach($types as $type) {
+            $results[$type->getId()] = $type->getNomdecode();
+        }
+        return $results;
+    } 
+
 }

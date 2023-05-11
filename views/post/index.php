@@ -28,7 +28,7 @@ $link = $router->url('home');
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><?= htmlentities($post->getSlug()) ?></h5>
-                    <p class="text-muted"><?=$post->getDateBegin()->format('d F Y') ?> </p>
+                    <p class="text-muted"><?=$post->getDatedebut()->format('d F Y') ?> </p>
                     <p><?= $post->getExcerpt() ?></p>
                     <p>
                         <a href="<?= $router->url('mission', ['id' => $post->getID(), 'slug' => $post->getSlug()]) ?>" class="btn btn-primary">Voir plus</a>

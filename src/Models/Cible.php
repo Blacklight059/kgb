@@ -53,7 +53,7 @@ class Cible {
        return $this;   
     }
 
-    public function getDateofbirth(): DateTime
+    public function getDatenaissance(): DateTime
     {
        return new DateTime($this->date_naissance);
     }

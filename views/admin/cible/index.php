@@ -3,16 +3,16 @@
 use App\Config;
 
 use App\Auth;
-use App\Table\ContactTable;
+use App\Table\CibleTable;
 
  // Auth::check();
 
-$title = 'Gestion des contacts';
+$title = 'Gestion des cibles';
 $pdo = Config::getPDO();
 
 
-$link = $router->url('admin_contacts');
-$items = (new ContactTable($pdo))->all();
+$link = $router->url('admin_cibles');
+$items = (new CibleTable($pdo))->all();
 ?>
 
 <?php if (isset($_GET['delete'])): ?>
@@ -27,7 +27,7 @@ $items = (new ContactTable($pdo))->all();
         <th>Nom</th>
         <th>Prénom</th>
         <th>Nom de code</th>
-        <th><a href="<?= $router->url('admin_contact_new') ?>" class="btn btn-primary">Nouveau</a></th>
+        <th><a href="<?= $router->url('admin_cible_new') ?>" class="btn btn-primary">Nouveau</a></th>
     </thead>
     <tbody>
         <?php foreach($items as $item): ?>
@@ -36,26 +36,26 @@ $items = (new ContactTable($pdo))->all();
                 #<?= $item->getId() ?>
             </td>
             <td>
-                <a href="<?= $router->url('admin_contact', ['id' => $item->getId()]) ?>">
+                <a href="<?= $router->url('admin_cible', ['id' => $item->getId()]) ?>">
                     <?= htmlentities($item->getName()); ?>
                 </a>
             </td>
             <td>
-                <a href="<?= $router->url('admin_contact', ['id' => $item->getId()]) ?>">
+                <a href="<?= $router->url('admin_cible', ['id' => $item->getId()]) ?>">
                     <?= htmlentities($item->getFirstname()); ?>
                 </a>
             </td>
             <td>
-                <a href="<?= $router->url('admin_contact', ['id' => $item->getId()]) ?>">
+                <a href="<?= $router->url('admin_cible', ['id' => $item->getId()]) ?>">
                     <?= htmlentities($item->getNomdecode()); ?>
                 </a>
             </td>
 
             <td>
-                <a href="<?= $router->url('admin_contact', ['id' => $item->getId()]) ?>" class="btn btn-primary">
+                <a href="<?= $router->url('admin_cible', ['id' => $item->getId()]) ?>" class="btn btn-primary">
                     Editer
                 </a>
-                <form action="<?= $router->url('admin_contact_delete', ['id' => $item->getId()]) ?>" method="POST"
+                <form action="<?= $router->url('admin_cible_delete', ['id' => $item->getId()]) ?>" method="POST"
                 onsubmit="return confirm('Voulez-vous vraiment effectuer cette action ?')" style="display:inline">
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>

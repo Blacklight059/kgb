@@ -10,14 +10,14 @@ final class CibleTable extends Table {
     protected $table = "cibles";
     protected $class = Cible::class;
 
-    public function createContact (Cible $cible)
+    public function createCible (Cible $cible)
     {
         $query = $this->pdo->prepare("INSERT INTO {$this->table} SET name = :name, firstname = :firstname, nom_de_code = :nom_de_code");
         $ok = $query->execute([
             'name' => $cible->getName(),
             'firstname' =>$cible->getFirstname(),
             'nom_de_code' =>$cible->getNomdecode(),
-            'date_naissance' =>$cible->getDateofbirth(),
+            'date_naissance' =>$cible->getDatenaissance(),
             'nationalite_id' =>$cible->getNationaliteid(),
             'mission_id' =>$cible->getMissionid()
 
@@ -30,7 +30,7 @@ final class CibleTable extends Table {
         $cible->setId($this->pdo->lastInsertId());
     }
 
-    public function updateContact (Cible $cible)
+    public function updateCible (Cible $cible)
     {
         $query = $this->pdo->prepare("UPDATE {$this->table} SET name = :name, firstname = :firstname, nom_de_code = :nom_de_code WHERE id = :id");
         $ok = $query->execute([
@@ -38,7 +38,7 @@ final class CibleTable extends Table {
             'name' => $cible->getName(),
             'firstname' =>$cible->getFirstname(),
             'nom_de_code' =>$cible->getNomdecode(),
-            'date_naissance' =>$cible->getDateofbirth(),
+            'date_naissance' =>$cible->getDatenaissance(),
             'nationalite_id' =>$cible->getNationaliteid(),
             'mission_id' =>$cible->getMissionid()
         ]);
@@ -71,7 +71,6 @@ final class CibleTable extends Table {
        return;
 
         $cibles = $paginatedQuery->getItems(Contact::class);
-        $ciblebyID = [];
         foreach($cibles as $cible) {
             $contactbyID[$cible->getId()] = $cible;
         }

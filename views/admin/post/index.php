@@ -15,7 +15,6 @@ $paginatedQuery = new PaginatedQuery(
 
 $posts = $paginatedQuery->getItems();
 $link = $router->url('admin_posts');
-
 ?>
 
 <?php if (isset($_GET['delete'])): ?>

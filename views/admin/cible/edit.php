@@ -2,19 +2,25 @@
 use App\Config;
 use App\HTML\Form;
 use App\Table\CibleTable;
+use App\Table\PostTable;
 use App\ObjectHelper;
 
 $pdo = Config::getPDO();
 $table = new CibleTable($pdo);
 $item = $table->find($params['id']);
-$success = false;
+$missionTable = new PostTable($pdo);
+$missions = $missionTable->listMission();
+ $success = false;
 $errors = [];
-$fields =  ['name', 'firstname', 'nom_de_code','date_naissance', 'nationalite_id', 'mission_id' ];
+$fields =  ['name', 'firstname', 'nom_de_code', 'date_naissance', 'nationalite_id', 'mission_id' ];
 
 if (!empty($_POST)) {
     ObjectHelper::hydrate($item, $_POST, $fields);
 
     if (empty($errors)) {
+        if (empty($_POST['name'])) {
+            $errors['name'][] = 'Lechamps du titre ne peut pas être vide';
+        }
         $table->update([
             'name' => $item->getName(),
             'firstname' =>$item->getFirstname(),
@@ -50,6 +56,6 @@ $form = new Form($item, $errors);
 <?php endif ?>
 
 
-<h1>Editer le contact <?= $params['id'] ?></h1>
+<h1>Editer la cible <?= $params['id'] ?></h1>
 
 <?php require ('_form.php'); ?>

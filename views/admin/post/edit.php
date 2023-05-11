@@ -18,7 +18,6 @@ $specialites = $specialiteTable->list();
 $item = $postTable->find($params['id']);
 $type = $typeTable->find($params['id']);
 $specialite = $specialiteTable->find($params['id']);
-
 $itemId = $item->getId();
 $typeId = $type->getId();
 
@@ -26,8 +25,7 @@ $typeId = $type->getId();
 $success = false;
 $errors = [];
 if (!empty($_POST)) {
-
-    ObjectHelper::hydrate($item, $_POST, ['nom_de_code', 'content', 'slug', 'types_mission', 'specialite']);
+    ObjectHelper::hydrate($item, $_POST, ['nom_de_code', 'slug', 'content', 'agents', 'nbres_cibles', 'nbres_contacts', 'date_debut', 'date_fin', 'types_mission', 'specialite', 'statuts_id', 'planque_id']);
     if (empty($errors)) {
         $postTable->updatePost($item);
         $typeId === $itemId;
