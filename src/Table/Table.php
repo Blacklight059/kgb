@@ -100,10 +100,10 @@ abstract class Table {
     
     public function list(): array
     {
-        $types = $this->all();
+        $items = $this->all();
         $results = [];
-        foreach($types as $type) {
-            $results[$type->getId()] = $type->getName();
+        foreach($items as $item) {
+            $results[$item->getId()] = $item->getName();
         }
         return $results;
     } 

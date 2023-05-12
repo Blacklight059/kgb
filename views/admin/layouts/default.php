@@ -16,10 +16,20 @@
             <img src="assets/img/logo.jpg" alt="Logo du site" id="logo">
         </a>
         <nav class="row  row-cols-2-lg header-nav">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="<?= $router->url('home') ?>">Accueil</a>
-                <a class="navbar-brand" href="<?= $router->url('admin_posts') ?>">Missions</a>
+            <div class="nav-item dropdown">
+            <div class="dropdown-menu">
+                <a class="dropdown-item"href="<?= $router->url('home') ?>">Accueuil</a>
+                <a class="dropdown-item" href="<?= $router->url('admin_posts') ?>">Missions</a>
+                <a class="dropdown-item" href="<?= $router->url('admin_contacts') ?>">Contacts</a>
+                <a class="dropdown-item" href="<?= $router->url('admin_types') ?>">Type de mission</a>
+                <a class="dropdown-item" href="<?= $router->url('admin_nationalites') ?>">Nationalité</a>
+                <a class="dropdown-item" href="<?= $router->url('admin_specialites') ?>">Specialité</a>
+                <a class="dropdown-item" href="<?= $router->url('admin_cibles') ?>">Cible</a>
+                <a class="dropdown-item" href="<?= $router->url('admin_planques') ?>">Planque</a>
+                <a class="dropdown-item" href="<?= $router->url('admin_payss') ?>">Pays</a>
+                <a class="dropdown-item" href="<?= $router->url('admin_typeplanques') ?>">Type de plaque</a>
 
+                </div>
             </div>
         </nav>
 

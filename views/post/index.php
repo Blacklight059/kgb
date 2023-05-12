@@ -4,7 +4,6 @@ use App\Models\Post;
 use App\Config;
 use App\PaginatedQuery;
 use App\Table\PostTable;
-use App\URL;
 
 
 $title = 'Acceuil';

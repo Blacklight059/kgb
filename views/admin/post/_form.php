@@ -11,8 +11,8 @@
     <?= $form->input('date_fin', 'Date de fin') ?>
     <?= $form->select('types_mission', 'type de la mission', $types) ?>
     <?= $form->select('specialite', 'specialite requise pour la mission', $specialites) ?>
-    <?= $form->select('statuts_id', 'Statuts de la mission') ?>
-    <?= $form->select('planque_id', 'Planque pour la mission') ?>
+    <?= $form->select('statuts_id', 'Statuts de la mission', $statuts) ?>
+    <?= $form->select('planque_id', 'Planque pour la mission', $planques) ?>
 
 
 

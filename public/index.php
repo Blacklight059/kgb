@@ -65,5 +65,35 @@ $router
     ->match('/admin/cible/new', 'admin/cible/new', 'admin_cible_new')
 
 
+    // Gestion des agents
+    ->get('/admin/agents', 'admin/agent/index', 'admin_agents')
+    ->match('/admin/agent/[i:id]', 'admin/agent/edit', 'admin_agent')
+    ->post('/admin/agent/[i:id]/delete', 'admin/agent/delete', 'admin_agent_delete')
+    ->match('/admin/agent/new', 'admin/agent/new', 'admin_agent_new')
+
+    // Gestion des planques
+    ->get('/admin/planques', 'admin/planque/index', 'admin_planques')
+    ->match('/admin/planque/[i:id]', 'admin/planque/edit', 'admin_planque')
+    ->post('/admin/planque/[i:id]/delete', 'admin/planque/delete', 'admin_planque_delete')
+    ->match('/admin/planque/new', 'admin/planque/new', 'admin_planque_new')
+    
+    // Gestion des statuts de mission
+    ->get('/admin/statuts', 'admin/statut/index', 'admin_statuts')
+    ->match('/admin/statut/[i:id]', 'admin/statut/edit', 'admin_statut')
+    ->post('/admin/statut/[i:id]/delete', 'admin/statut/delete', 'admin_statut_delete')
+    ->match('/admin/statut/new', 'admin/statut/new', 'admin_statut_new')
+        
+    // Gestion des pays de la mission
+    ->get('/admin/payss', 'admin/pays/index', 'admin_payss')
+    ->match('/admin/pays/[i:id]', 'admin/pays/edit', 'admin_pays')
+    ->post('/admin/pays/[i:id]/delete', 'admin/pays/delete', 'admin_pays_delete')
+    ->match('/admin/pays/new', 'admin/pays/new', 'admin_pays_new')
+      
+    // Gestion des types de planque mission
+    ->get('/admin/typeplanques', 'admin/typeplanque/index', 'admin_typeplanques')
+    ->match('/admin/typeplanque/[i:id]', 'admin/typeplanque/edit', 'admin_typeplanque')
+    ->post('/admin/typeplanque/[i:id]/delete', 'admin/typeplanque/delete', 'admin_typeplanque_delete')
+    ->match('/admin/typeplanque/new', 'admin/typeplanque/new', 'admin_typeplanque_new')
+      
     ->run();
 ?>

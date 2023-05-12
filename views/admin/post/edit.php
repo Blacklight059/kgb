@@ -5,15 +5,23 @@ use App\Table\PostTable;
 use App\ObjectHelper;
 use App\Table\TypeTable;
 use App\Table\SpecialiteTable;
+use App\Table\PlanqueTable;
+use App\Table\StatutTable;
+
 
 
 
 $pdo = Config::getPDO();
 $postTable = new PostTable($pdo);
 $typeTable = new TypeTable($pdo);
+$statutTable = new StatutTable($pdo);
+$planqueTable = new PlanqueTable($pdo);
 $specialiteTable = new SpecialiteTable($pdo);
+
 $types = $typeTable->list();
 $specialites = $specialiteTable->list();
+$planques = $planqueTable->list();
+$statuts = $statutTable->list();
 
 $item = $postTable->find($params['id']);
 $type = $typeTable->find($params['id']);
