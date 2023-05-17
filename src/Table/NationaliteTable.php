@@ -7,7 +7,7 @@ use App\Models\Nationalite;
 
 final class NationaliteTable extends Table {
 
-    protected $table = "nationalité";
+    protected $table = "nationalite";
     protected $class = Nationalite::class;
 
     public function createNationalite (Nationalite $nationalite)

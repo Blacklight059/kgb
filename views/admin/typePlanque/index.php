@@ -11,7 +11,7 @@ $title = 'Gestion des types de planque';
 $pdo = Config::getPDO();
 
 
-$link = $router->url('admin_Typeplanques');
+$link = $router->url('admin_typeplanques');
 $items = (new TypePlanqueTable($pdo))->all();
 ?>
 

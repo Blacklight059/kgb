@@ -42,18 +42,23 @@ class Router {
         return $this->router->generate($name, $params);
     }
 
+
     public function run(): self
     {
         $match = $this->router->match();
         $view = $match["target"];
         $params = $match['params'];
         $router = $this;
-        $isAdmin = strpos($view, 'admin/') != false;
-        $layout = $isAdmin ? 'admin/layouts/default' : 'layouts/default';
+        $isAdmin = strpos($view, 'public/') != false;
+        $layout = $isAdmin ? 'views/admin/default' : 'public/default';
+
         ob_start();
         require $this->viewPath . DIRECTORY_SEPARATOR . $view . '.php';
         $content = ob_get_clean();
+        
         require $this->viewPath . DIRECTORY_SEPARATOR . $layout . '.php';
+
+
 
         return $this;
     }

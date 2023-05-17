@@ -3,7 +3,7 @@
 use App\Config;
 
 use App\Auth;
-use App\Table\Table;
+use App\Table\PaysTable;
 
  // Auth::check();
 
@@ -11,8 +11,8 @@ $title = 'Gestion des pays';
 $pdo = Config::getPDO();
 
 
-$link = $router->url('admin_types');
-$items = (new Table($pdo))->all();
+$link = $router->url('admin_payss');
+$items = (new PaysTable($pdo))->all();
 ?>
 
 <?php if (isset($_GET['delete'])): ?>
@@ -35,16 +35,16 @@ $items = (new Table($pdo))->all();
                 #<?= $item->getId() ?>
             </td>
             <td>
-                <a href="<?= $router->url('admin_type', ['id' => $item->getId()]) ?>">
+                <a href="<?= $router->url('admin_pays', ['id' => $item->getId()]) ?>">
                     <?= htmlentities($item->getName()); ?>
                 </a>
             </td>
 
             <td>
-                <a href="<?= $router->url('admin_type', ['id' => $item->getId()]) ?>" class="btn btn-primary">
+                <a href="<?= $router->url('admin_pays', ['id' => $item->getId()]) ?>" class="btn btn-primary">
                     Editer
                 </a>
-                <form action="<?= $router->url('admin_type_delete', ['id' => $item->getId()]) ?>" method="POST"
+                <form action="<?= $router->url('admin_pays_delete', ['id' => $item->getId()]) ?>" method="POST"
                 onsubmit="return confirm('Voulez-vous vraiment effectuer cette action ?')" style="display:inline">
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>

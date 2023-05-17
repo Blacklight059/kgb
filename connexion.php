@@ -1,7 +1,9 @@
-
 <?php 
-    session_start(); // Démarrage de la session
-    require_once 'config.php'; // On inclut la connexion à la base de données
+use App\Config;
+$pdo = Config::getPDO();// ajout connexion bdd 
+
+session_start(); // Démarrage de la session
+
 
     if(!empty($_POST['email']) && !empty($_POST['password'])) // Si il existe les champs email, password et qu'il sont pas vident
     {
@@ -12,11 +14,10 @@
         $email = strtolower($email); // email transformé en minuscule
         
         // On regarde si l'utilisateur est inscrit dans la table utilisateurs
-        $check = $bdd->prepare('SELECT pseudo, lastname, firstname, email, password, token FROM utilisateurs WHERE email = ?');
+        $check = $pdo->prepare('SELECT pseudo, lastname, firstname, email, password, token FROM utilisateurs WHERE email = ?');
         $check->execute(array($email));
         $data = $check->fetch();
         $row = $check->rowCount();
-        
         
 
         // Si > à 0 alors l'utilisateur existe
@@ -30,9 +31,9 @@
                 {
                     // On créer la session et on redirige sur landing.php
                     $_SESSION['user'] = $data['token'];
-                    header('Location: landing.php');
+                    header('Location: ' . $router->url('admin_landing'));
                     die();
-                }else{ header('Location: admin.php?login_err=password'); die(); }
-            }else{ header('Location: admin.php?login_err=email'); die(); }
-        }else{ header('Location: admin.php?login_err=already'); die(); }
-    }else{ header('Location: admin.php'); die();} // si le formulaire est envoyé sans aucune données
+                }else{ header('Location: '. $router->url('admin') .'?login_err=password'); die(); }
+            }else{ header('Location: '. $router->url('admin') .'?login_err=email'); die(); }
+        }else{ header('Location: '. $router->url('admin') .'?login_err=already'); die(); }
+    }else{ header('Location: '. $router->url('admin')); die();} // si le formulaire est envoyé sans aucune données

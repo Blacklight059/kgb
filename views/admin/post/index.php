@@ -4,6 +4,7 @@ use App\Config;
 use App\PaginatedQuery;
 use App\Models\Post;
 
+
 $title = 'Administration';
 $pdo = Config::getPDO();
 
