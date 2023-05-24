@@ -5,14 +5,28 @@ use App\Models\Post;
 use App\Table\PostTable;
 use App\Table\TypeTable;
 use App\Table\SpecialiteTable;
+use App\Table\StatutTable;
 use App\ObjectHelper;
+use App\Table\PlanqueTable;
 
 $errors = [];
 $item = new Post();   
-$pdo = Config::getPDO();
+
+session_start();
+$pdo = Config::getPDO();// ajout connexion bdd 
+//si la session n'est pas créé on redirige vers la page d'acceuil
+if(!isset($_SESSION['user'])){
+    header('Location: ' . $router->url('home'));
+    die();
+}
+
 $typeTable = new TypeTable($pdo);
 $specialiteTable = new SpecialiteTable($pdo);
+$statutTable = new StatutTable($pdo);
+$planqueTable = new PlanqueTable($pdo);
 $types = $typeTable->list();
+$planques = $planqueTable->list();
+$statuts = $statutTable->list();
 $specialites = $specialiteTable->list();
 
 $item->setDatedebut(date('Y-m-d H:i:s'));

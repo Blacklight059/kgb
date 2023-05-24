@@ -6,7 +6,13 @@ use App\Models\Post;
 
 
 $title = 'Administration';
-$pdo = Config::getPDO();
+session_start();
+$pdo = Config::getPDO();// ajout connexion bdd 
+//si la session n'est pas créé on redirige vers la page d'acceuil
+if(!isset($_SESSION['user'])){
+    header('Location: ' . $router->url('home'));
+    die();
+}
 
 $paginatedQuery = new PaginatedQuery(
     "SELECT * FROM missions ORDER BY date_debut DESC",
@@ -45,7 +51,7 @@ $link = $router->url('admin_posts');
                 <a href="<?= $router->url('admin_post', ['id' => $post->getId()]) ?>" class="btn btn-primary">
                     Editer
                 </a>
-                <form action="<?= $router->url('admin_post_delete', ['id' => $post->getId()]) ?>" method="OST"
+                <form action="<?= $router->url('admin_post_delete', ['id' => $post->getId()]) ?>" method="POST"
                 onsubmit="return confirm('Voulez-vous vraiment effectuer cette action ?')" style="display:inline">
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>

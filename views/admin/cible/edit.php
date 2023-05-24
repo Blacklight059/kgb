@@ -5,7 +5,13 @@ use App\Table\CibleTable;
 use App\Table\PostTable;
 use App\ObjectHelper;
 
-$pdo = Config::getPDO();
+session_start();
+$pdo = Config::getPDO();// ajout connexion bdd 
+//si la session n'est pas créé on redirige vers la page d'acceuil
+if(!isset($_SESSION['user'])){
+    header('Location: ' . $router->url('home'));
+    die();
+}
 $table = new CibleTable($pdo);
 $item = $table->find($params['id']);
 $missionTable = new PostTable($pdo);

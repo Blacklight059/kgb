@@ -8,8 +8,13 @@ use App\Table\StatutTable;
  // Auth::check();
 
 $title = 'Gestion des statuts';
-$pdo = Config::getPDO();
-
+session_start();
+$pdo = Config::getPDO();// ajout connexion bdd 
+//si la session n'est pas créé on redirige vers la page d'acceuil
+if(!isset($_SESSION['user'])){
+    header('Location: ' . $router->url('home'));
+    die();
+}
 
 $link = $router->url('admin_statuts');
 $items = (new StatutTable($pdo))->all();

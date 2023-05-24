@@ -2,7 +2,6 @@
 namespace App\Table;
 
 use App\Config;
-use App\Models\Post;
 use App\Table\Exception\NotFoundException;
 use \PDO;
 

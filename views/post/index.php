@@ -1,13 +1,9 @@
 <?php
-use App\Helpers\Text;
 use App\Models\Post;
-use App\Config;
 use App\PaginatedQuery;
-use App\Table\PostTable;
 
 
-$title = 'Acceuil';
-$pdo = Config::getPDO();
+$title = 'Accueil';
 
 $paginatedQuery = new PaginatedQuery(
     "SELECT * FROM missions ORDER BY date_debut DESC",
@@ -15,7 +11,6 @@ $paginatedQuery = new PaginatedQuery(
     Post::class
 );
 
-$table = new PostTable($pdo);
 
 $posts = $paginatedQuery->getItems();
 $link = $router->url('home');
