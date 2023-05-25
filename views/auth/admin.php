@@ -1,7 +1,12 @@
 <?php
 use App\Config;
-$pdo = Config::getPDO();
-
+session_start();
+$pdo = Config::getPDO();// ajout connexion bdd 
+//si la session n'est pas créé on redirige vers la page d'acceuil
+if(isset($_SESSION['user'])){
+    header('Location: ' . $router->url('admin_landing'));
+    die();
+}
 ?>
  
 <div class="login-form">
@@ -37,7 +42,6 @@ $pdo = Config::getPDO();
                         break;
                     }
                 }
-                session_start(); // Démarrage de la session
 
                 if(!empty($_POST['email']) && !empty($_POST['password'])) // Si il existe les champs email, password et qu'il sont pas vident
                 {

@@ -40,7 +40,7 @@ use App\Config;
                 <div class="text-center">
                         <h1 class="p-5">Bonjour <?php echo $data['pseudo']; ?> !</h1>
                         <hr />
-                        <a href="deconnexion.php" class="btn btn-danger btn-lg">Déconnexion</a>
+                        <a href="<?= $router->url('admin_deconnexion') ?>" class="btn btn-danger btn-lg">Déconnexion</a>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#change_password">
                           Changer mon mot de passe

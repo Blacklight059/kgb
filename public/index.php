@@ -25,24 +25,21 @@ if (isset($_GET['page']) && $_GET['page'] === '1') {
 $router = new App\Router(dirname(__DIR__) . '/');
 $router
     ->get('/', 'views/post/index', 'home')
-    ->get('/mission/[*:slug]-[i:id]', 'views/post/mission', 'mission')
+    ->get('/[*:slug]-[i:id]', 'views/post/mission', 'mission')
     // ADMIN
     ->match('/admin', 'views/auth/admin', 'admin')
     ->match('/admin_inscription', 'views/auth/inscription', 'admin_inscription')
     ->match('/admin_inscription_traitement', 'views/auth/inscription_traitement', 'admin_inscription_traitement')
     ->match('/admin_landing', 'views/post/landing', 'admin_landing')
-
-    ->match('admin_connection', 'views/post/connection', 'admin_connection')
-
-    ->match('/admin_deconnection', 'views/post/deconnection', 'admin_deconnection')
+    ->match('/admin_deconnexion', 'views/auth/deconnexion', 'admin_deconnexion')
 
 
 
-    // Gestion des articles
+    // Gestion des missions
     ->match('/admin_posts', 'views/admin/post/index', 'admin_posts')
-    ->match('/admin/post/[i:id]', 'views/admin/post/edit', 'admin_post')
-    ->post('/admin/post/[i:id]/delete', 'views/admin/post/delete', 'admin_post_delete')
-    ->match('/admin/post/new', 'views/admin/post/new', 'admin_post_new')
+    ->match('/post/[i:id]', 'views/admin/post/edit', 'admin_post')
+    ->post('/post/[i:id]/delete', 'views/admin/post/delete', 'admin_post_delete')
+    ->match('/post/new', 'views/admin/post/new', 'admin_post_new')
     
     // Gestion des contacts
     ->get('/admin/contacts', 'views/admin/contact/index', 'admin_contacts')

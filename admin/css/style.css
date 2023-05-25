@@ -21,8 +21,6 @@
     margin: auto;
     margin-bottom: 2px;
     padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
     box-sizing: border-box;
     color: #C5C5C5;
     text-decoration: none;
@@ -58,9 +56,4 @@
 .btn {
     background-color: #C5C5C5;
     color: black;
-}
-
-.card-body h3 {
-    padding: 5px;
-
 }

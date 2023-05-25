@@ -115,17 +115,20 @@ if($contact === false) {
 
 ?>
 
-<h1><?= htmlentities($post->getSlug()) ?></h1>
-<p class="text-muted">Date de début de mission : <?=$post->getDatedebut()->format('d F Y') ?></p>
-    <p>Cible : <?= htmlentities($cible->getNomdecode()) ?></p>
-    <p>Agent : <?= htmlentities($agent->getNomdecode()) ?></p>
-    <p>Contact : <?= htmlentities($contact->getNomdecode()) ?></p>
-    <p>Specialite : <?= htmlentities($specialite->getName()) ?></p>
-    <p>Date de fin de mission : <?= $post->getDatefin()->format('d F Y') ?></p>
-    <p>Type de mission : <?= htmlentities($type->getName()) ?></p>
-    <p>Statut de la mission : <?= htmlentities($statut->getName()) ?></p>
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title"><?= htmlentities($post->getSlug()) ?></h1>
+        <h3 class="text-muted">Date de début de mission : <?=$post->getDatedebut()->format('d F Y') ?></h3>
+        <h3>Cible : <?= htmlentities($cible->getNomdecode()) ?></h3>
+        <h3>Agent : <?= htmlentities($agent->getNomdecode()) ?></h3>
+        <h3>Contact : <?= htmlentities($contact->getNomdecode()) ?></h3>
+        <h3>Specialite : <?= htmlentities($specialite->getName()) ?></h3>
+        <h3>Date de fin de mission : <?= $post->getDatefin()->format('d F Y') ?></h3>
+        <h3>Type de mission : <?= htmlentities($type->getName()) ?></h3>
+        <h3>Statut de la mission : <?= htmlentities($statut->getName()) ?></h3>
+        <p><?= $post->getFormattedContent() ?></p>
 
+    </div>
 
+</div>
 
-
-<p><?= $post->getFormattedContent() ?></p>
